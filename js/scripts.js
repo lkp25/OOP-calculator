@@ -9,10 +9,11 @@ document.addEventListener('click', (e)=>{
         calculator.addNumber(value)
     }
     if(e.target.matches('[data-operation]')){
-        console.log('oper');
+        const oper = e.target.textContent
+        calculator.defineOperation(oper)
     }
     if(e.target.matches('[data-evaluate]')){
-        console.log('eval');
+        calculator.evaluate()
     }
     if(e.target.matches('[data-delete]')){
         calculator.deleteNumber()

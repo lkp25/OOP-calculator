@@ -1,0 +1,73 @@
+:root {
+    font-size: 16px;
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+    place-items: center;
+    background: 
+    linear-gradient(40deg, rgba(255, 0, 0, 0.562), rgba(0, 0, 255, 0.514)),
+    linear-gradient(90deg, rgba(60, 255, 0, 0.931), rgba(255, 0, 221, 0.514))
+    ;
+    min-height: 100vh;
+}
+.calc-container{
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(3, 36, 9);
+    min-height: 300px;
+    min-width: 200px;
+    max-height: 600px;
+    max-width: 400px;
+}
+.display-container{
+    border-radius: 5px;
+    min-height: 50px;
+    width: 100%;
+    background-color: rgb(2, 26, 63);
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    display: grid;
+    justify-items: end;
+    padding: 0.3rem;
+}
+.previous{
+    display: flex;
+    
+}
+.previousValue, .operationType{
+    font-size: 1rem;
+    color: rgb(143, 122, 122);
+    padding: 0.2rem;
+}
+
+
+
+
+
+.buttons-container{
+    padding: 0.2rem;
+    display: grid;
+    grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+    gap:0.1rem;
+}
+button{
+    height: 50px;
+    background-color: rgb(154, 164, 165);
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(22, 22, 21);
+    border-radius: 5px;
+}
+button:first-child{
+    grid-area: 1 / 1 / auto / span 2;
+}
+button:last-child{
+    grid-area: 5 / 3 / auto / span 2;
+}

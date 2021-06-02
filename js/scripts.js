@@ -1,10 +1,12 @@
 import Calculator from "./Calculator.js"
 
 const calculator = new Calculator()
+calculator.clearDisplay()
 
 document.addEventListener('click', (e)=>{
     if(e.target.matches('[data-input]')){
-        console.log('input');
+        const value = e.target.textContent
+        calculator.addNumber(value)
     }
     if(e.target.matches('[data-operation]')){
         console.log('oper');
@@ -13,9 +15,11 @@ document.addEventListener('click', (e)=>{
         console.log('eval');
     }
     if(e.target.matches('[data-delete]')){
-        console.log('del');
+        calculator.deleteNumber()
     }
     if(e.target.matches('[data-clear]')){
-        console.log('clea');
+        calculator.clearDisplay()
     }
 })
+
+ 

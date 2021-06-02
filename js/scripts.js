@@ -1,5 +1,7 @@
 import Calculator from "./Calculator.js"
 
+const NUMBER_FORMATTER = new Intl.NumberFormat("en", {maximumFractionDigits: 20})
+
 const calculator = new Calculator()
 calculator.clearDisplay()
 

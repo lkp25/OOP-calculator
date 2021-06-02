@@ -1,3 +1,5 @@
+const NUMBER_FORMATTER = new Intl.NumberFormat("en", {maximumFractionDigits: 20})
+NUMBER_FORMATTER.format()
 export default class Calculator{
     constructor(previousNumber, currentNumber, operation){
         this.previousNumber = previousNumber
@@ -37,9 +39,14 @@ export default class Calculator{
             :
             this.currentValDisplay.textContent = ''
         }
+        const helper = this.currentValDisplay.textContent.split(',').join('')
+        let result = helper + value
 
-        this.currentValDisplay.textContent += value
+        this.currentValDisplay.textContent = result
         this.currentNumber = this.currentValDisplay.textContent
+        this.currentValDisplay.dataset.value = result.split(',').join('')
+
+        // this.currentValDisplay.textContent = this.formatToCommas(parseFloat(result))
 
         
     }
@@ -63,11 +70,12 @@ export default class Calculator{
             return
         }
         curr.textContent = curr.textContent.substr(0, curr.textContent.length -1)
+        this.formatToCommas(this.currentNumber)
         this.currentNumber = curr.textContent
     }
    evaluate(){
        const prev = parseFloat(this.previousNumber)
-       const curr = parseFloat(this.currentNumber)
+       const curr = parseFloat(this.currentValDisplay.dataset.value)
        const oper = this.operation
        let result
        
@@ -94,8 +102,14 @@ export default class Calculator{
        }
        this.prevValDisplay.textContent = `${this.currentNumber}  ${oper}  ${this.previousNumber}`
        this.currentNumber = result
-       this.currentValDisplay.textContent = this.currentNumber
+       this.currentValDisplay.textContent = this.formatToCommas(this.currentNumber)
        this.operationDisplay.textContent = '='
+   }
+   formatToCommas(value){
+       return NUMBER_FORMATTER.format(value)
+   }
+   formatToNumber(){
+
    }
 }
 

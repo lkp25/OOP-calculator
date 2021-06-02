@@ -20,9 +20,24 @@ export default class Calculator{
        
     }
     addNumber(value){
+        console.log(this.currentNumber)
+        if(value === '.' && this.currentNumber?.length > 0){            
+          const test = this.currentValDisplay.textContent.split('').find(char => char === '.')  
+          if(test){
+              return
+          }
+            
+            
+            
+            
+        }
         if(this.currentValDisplay.textContent === '0'){
+            value === '.' ? 
+            this.currentValDisplay.textContent = '0'
+            :
             this.currentValDisplay.textContent = ''
         }
+
         this.currentValDisplay.textContent += value
         this.currentNumber = this.currentValDisplay.textContent
 
@@ -67,7 +82,11 @@ export default class Calculator{
                result = prev - curr
                break;
            case '/':
-               result = prev / curr
+               if(curr === 0){
+                   result = 0
+               }else{
+                   result = prev / curr
+               }
                break;
        
            default:
